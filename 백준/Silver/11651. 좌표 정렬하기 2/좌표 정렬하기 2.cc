@@ -1,21 +1,32 @@
-#include <vector>
 #include <stdio.h>
-#include <iostream>
+#include <stdlib.h>
 #include <algorithm>
+#include <vector>
 using namespace std;
-int main(void)
-{
-    vector<pair<int, int>> v;
-    int n, a, b;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a >> b;
-        v.push_back(pair<int, int>(b, a));
+ 
+bool compare(pair<int, int>a, pair<int, int>b) {
+    if (a.second == b.second) {
+        return a.first < b.first;
     }
-    sort(v.begin(), v.end());
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d %d\n", v[i].second, v[i].first);
+    else {
+        return a.second < b.second;
     }
+}
+ 
+int main(){
+    int N,x,y;
+    vector<pair<int, int> > v;
+    scanf("%d", &N);
+    
+    for(int i=0; i<N; i++){
+        scanf("%d %d", &x,&y);
+        v.push_back(make_pair(x,y));
+    }
+    
+    sort(v.begin(),v.end(),compare);
+ 
+    for(int i=0; i<N; i++)
+        printf("%d %d\n", v[i].first,v[i].second);
+        
+ 
 }
