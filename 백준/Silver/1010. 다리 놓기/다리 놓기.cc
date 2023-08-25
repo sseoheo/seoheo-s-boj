@@ -1,22 +1,24 @@
-#include <bits/stdc++.h>
+#include <iostream>
+
 using namespace std;
 
-int main () {
-    ios_base::sync_with_stdio(false);
+int main(){
+    ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int tcase, n, r, temp;
-    int answer;
+    int t, m, n, r, ans;
+    cin >> t ;
 
-    cin >> tcase;
-    while(tcase--) {
-        answer = 1;
-        temp = 1;
-        cin >> r >> n;
-        for(int i = n; i > n - r; i--) {
-            answer *= i;
-            answer /= temp++;
+    while(t--){
+        cin >> m >> n;
+
+        ans = 1;
+        r = 1;
+        for(int i = n; i > n - m; i--){
+            ans *= i;
+            ans /= r++;
         }
-        cout << answer << endl;
+        cout << ans << '\n';
     }
+    return 0;
 }
