@@ -5,14 +5,14 @@ using namespace std;
 
 int N;
 string base, comp;
-
+int alpha[26];
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int alpha[26]= {0};
+
     cin >> N;
     cin >> base;
     for (int i = 0; i < base.length(); i++)
