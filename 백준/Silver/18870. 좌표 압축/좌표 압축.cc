@@ -1,34 +1,30 @@
-#include <algorithm>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
+#define FASTIO std::ios::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL);
 using namespace std;
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+int main() {
+    FASTIO
 
-    int n;
-    cin >> n;
-    vector<int> v(n); //원본 벡터
-    // 입력
-    for (int i = 0; i < n; i++)
-    {
-        cin >> v[i];
-    }
-    vector<int> cv(v); // 원본 벡터를 복사하여 중복 된 수를 제거하고 정렬을 시행 할 벡터.
-    sort(cv.begin(), cv.end()); //오름차순 정렬
-    // 중복 제거
-    cv.erase(unique(cv.begin(), cv.end()), cv.end());
-    for (int i = 0; i < n; i++)
-    {
-        // i번째 요소값의 위치 it
-        auto it = lower_bound(cv.begin(), cv.end(), v[i]);
-        // it에서 cv벡터의 시작 주소값을 빼준 값이 답
-        cout << it - cv.begin() << ' ';
+    int N;
+    cin >> N;
+    vector<int> X(N);
+    // 원본 벡터 생성
+    for(int i = 0; i < N; i++){
+        cin >> X[i];
     }
 
+    vector<int> CopyX(X); // 원본 벡터 복사
+    sort(CopyX.begin(), CopyX.end()); // 오름차순 정렬
+    //중복 제거
+    CopyX.erase(unique(CopyX.begin(), CopyX.end()), CopyX.end());
+    for(int i = 0; i < N; i++){
+        // i번째 요소의 위치 비교값
+        auto Value_i = lower_bound(CopyX.begin(), CopyX.end(), X[i]);
+
+        cout << Value_i - CopyX.begin() << ' ';
+    }
     return 0;
 }
